@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import { Card, Grid, IconButton } from '@mui/material';
 import React from 'react'
 import { ITrack } from '../types/track'
 import styles from '../styles/TrackItem.module.scss'
 import { Delete, Pause, PlayArrow } from '@mui/icons-material';
+import { useRouter } from 'next/router';
 
 interface TrackItemProps {
     track: ITrack;
@@ -10,9 +13,11 @@ interface TrackItemProps {
 }
 const TrackItem: React.FC<TrackItemProps> = ({track, active = false}) => {
 
+    const router = useRouter()
+
   return (
-    <Card className={styles.track}>
-        <IconButton>
+    <Card className={styles.track} onClick={() => router.push('/tracks/' + track._id)}>
+        <IconButton onClick={e => e.stopPropagation()}>
             {!active
                 ? <PlayArrow />
                 : <Pause/>
@@ -24,7 +29,7 @@ const TrackItem: React.FC<TrackItemProps> = ({track, active = false}) => {
             <div style={{fontSize: 12, color: 'gray'}}>{track.artist}</div>
         </Grid>
         {active && <div>02:42 / 03:22</div>}
-        <IconButton style={{marginLeft: 'auto'}}>
+        <IconButton onClick={e => e.stopPropagation()} style={{marginLeft: 'auto'}}>
             <Delete/>
         </IconButton>
     </Card>
