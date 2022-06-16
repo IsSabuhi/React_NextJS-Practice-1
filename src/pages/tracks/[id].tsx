@@ -8,6 +8,7 @@ import MainLayout from "../../layouts/MainLayout";
 import { ITrack } from "../../types/track";
 
 const TrackPage = () => {
+    
     const track: ITrack = {_id: '1', name: 'Трек 1', artist: 'Исполнитель', text: 'Какой-то текст', listens: 5, audio: '', picture: 'https://avatars.yandex.net/get-music-content/6021799/6a43ed6a.a.22736848-1/200x200', comments: [{_id: '1', username: 'Sabuhi', text: 'qwerty', }]}
 
     const router = useRouter()
