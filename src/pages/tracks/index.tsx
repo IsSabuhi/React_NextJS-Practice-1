@@ -9,8 +9,9 @@ import { ITrack } from '../../types/track'
 export default function Index() {
 
     const router = useRouter()
+
     const tracks: ITrack[] = [
-        {_id: '1', name: 'Трек 1', artist: 'Исполнитель', text: 'Какой-то текст', listens: 5, audio: '', picture: 'https://avatars.yandex.net/get-music-content/6021799/6a43ed6a.a.22736848-1/200x200', comments: [{_id: '1', username: 'Sabuhi', text: 'qwerty', }]},
+        {_id: '1', name: 'Трек 1', artist: 'Исполнитель', text: 'Какой-то текст', listens: 5, audio: '../assets/music1.mp3', picture: 'https://avatars.yandex.net/get-music-content/6021799/6a43ed6a.a.22736848-1/200x200', comments: [{_id: '1', username: 'Sabuhi', text: 'qwerty', }]},
         {_id: '2', name: 'Трек 2', artist: 'Исполнитель1', text: 'Какой-то текст1', listens: 9, audio: '', picture: 'https://avatars.yandex.net/get-music-content/6021799/6a43ed6a.a.22736848-1/200x200', comments: [{_id: '1', username: 'Alex', text: 'qweqwe', }]},
     ]
 

@@ -4,7 +4,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 
 
 const rootReducer = combineReducers({
-    playey: playerReducer
+    player: playerReducer
 })
 
 export const reducer = (state, action) => {
