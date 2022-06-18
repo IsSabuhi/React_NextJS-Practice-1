@@ -1,22 +1,22 @@
 FROM node:lts as dependencies
-WORKDIR /my-app
+WORKDIR /app
 COPY package.json ./
-RUN npm install --frozen-lockfile
+RUN yarn install --frozen-lockfile
 
 FROM node:lts as builder
-WORKDIR /my-app
+WORKDIR /app
 COPY . .
-COPY --from=dependencies /my-app/node_modules ./node_modules
-RUN npm build
+COPY --from=dependencies /app/node_modules ./node_modules
+RUN yarn build
 
 FROM node:lts as runner
-WORKDIR /my-app
+WORKDIR /app
 ENV NODE_ENV production
 
-COPY --from=builder /my-app/public ./public
-COPY --from=builder /my-app/package.json ./package.json
-COPY --from=builder /my-app/.next ./.next
-COPY --from=builder /my-app/node_modules ./node_modules
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
 
-EXPOSE 3030
-CMD ["npm", "start"]
+EXPOSE 3000
+CMD ["yarn", "start"]
